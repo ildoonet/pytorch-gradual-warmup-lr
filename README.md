@@ -1,6 +1,6 @@
 # pytorch-gradual-warmup-lr
 
-Gradually warm-up(increasing) learning rate in optimizer. Proposed in 'Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour'.
+Gradually warm-up(increasing) learning rate for pytorch's optimizer. Proposed in 'Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour'.
 
 <img src="asset/tensorboard.png" alt="example tensorboard" width="300" height="whatever">
 Example : Gradual Warmup for 100 epoch, after that, use cosine-annealing.
