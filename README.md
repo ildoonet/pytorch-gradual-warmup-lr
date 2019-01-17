@@ -2,7 +2,7 @@
 
 Gradually warm-up(increasing) learning rate in optimizer. Proposed in 'Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour'.
 
-![](asset/tensorboard.png | width=200)
+<img src="asset/tensorboard.png" alt="example tensorboard" width="200" height="whatever">
 Example : Gradual Warmup for 100 epoch, after that, use cosine-annealing.
 
 ## Install
