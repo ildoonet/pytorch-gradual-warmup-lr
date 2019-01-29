@@ -14,6 +14,8 @@ $ pip install git+https://github.com/ildoonet/pytorch-gradual-warmup-lr.git
 ## Usage
 
 ```python
+from warmup_scheduler import GradualWarmupScheduler
+
 scheduler_plateau = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=3, verbose=True)
 scheduler_warmup = GradualWarmupScheduler(optimizer, multiplier=8, total_epoch=10, after_scheduler=scheduler_plateau)
 
