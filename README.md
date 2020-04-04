@@ -31,7 +31,7 @@ if __name__ == '__main__':
     scheduler_steplr = StepLR(optim, step_size=10, gamma=0.1)
     scheduler_warmup = GradualWarmupScheduler(optim, multiplier=1, total_epoch=5, after_scheduler=scheduler_steplr)
 
-    # this zero gradient update is needed to avoid an warning message, issue #8.
+    # this zero gradient update is needed to avoid a warning message, issue #8.
     optim.zero_grad()
     optim.step()
 
