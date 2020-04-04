@@ -4,9 +4,8 @@ from __future__ import print_function
 
 import setuptools
 
-_VERSION = '0.1.1'
+_VERSION = '0.1.2'
 
-# 'opencv-python >= 3.3.1'
 REQUIRED_PACKAGES = [
 ]
 

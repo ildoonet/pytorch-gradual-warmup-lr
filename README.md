@@ -13,13 +13,27 @@ $ pip install git+https://github.com/ildoonet/pytorch-gradual-warmup-lr.git
 
 ## Usage
 
+See [run.py](warmup_scheduler/run.py) file.
+
 ```python
+import torch
+from torch.optim.lr_scheduler import StepLR, ExponentialLR
+from torch.optim.sgd import SGD
+
 from warmup_scheduler import GradualWarmupScheduler
 
-scheduler_cosine = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, max_epoch)
-scheduler_warmup = GradualWarmupScheduler(optimizer, multiplier=8, total_epoch=10, after_scheduler=scheduler_cosine)
 
-for epoch in range(train_epoch):
-    scheduler_warmup.step()     # 10 epoch warmup, after that schedule as after_scheduler
-    ...
+if __name__ == '__main__':
+    model = [torch.nn.Parameter(torch.randn(2, 2, requires_grad=True))]
+    optim = SGD(model, 0.1)
+
+    scheduler_steplr = StepLR(optim, step_size=10, gamma=0.1)
+    scheduler_warmup = GradualWarmupScheduler(optim, multiplier=1, total_epoch=5, after_scheduler=scheduler_steplr)
+    # scheduler_warmup is chained with schduler_steplr
+
+    for epoch in range(1, 20):
+        scheduler_warmup.step(epoch)
+        print(epoch, optim.param_groups[0]['lr'])
+
+        optim.step()    # backward pass (update network)
 ```
