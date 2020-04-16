@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import setuptools
 
-_VERSION = '0.3'
+_VERSION = '0.3.1'
 
 REQUIRED_PACKAGES = [
 ]
