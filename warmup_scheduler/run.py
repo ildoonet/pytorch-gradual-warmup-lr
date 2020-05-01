@@ -18,7 +18,7 @@ if __name__ == '__main__':
     optim.step()
 
     for epoch in range(1, 20):
-        scheduler_warmup.step(epoch)
+        scheduler_warmup.step()
         print(epoch, optim.param_groups[0]['lr'])
 
         optim.step()    # backward pass (update network)
