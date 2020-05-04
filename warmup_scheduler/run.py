@@ -31,13 +31,16 @@ if __name__ == '__main__':
 
     # this zero gradient update is needed to avoid a warning message, issue #8.
     optim.zero_grad()
+    optim.step()
+    scheduler_warmup.step()
 
     lr_list = list()
     for epoch in range(epochs):
+        current_lr = optim.param_groups[0]['lr']
+
         optim.step()
         scheduler_warmup.step()
 
-        current_lr = optim.param_groups[0]['lr']
         print(epoch + 1, current_lr)
         lr_list.append(current_lr)
 
