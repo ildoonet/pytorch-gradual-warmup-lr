@@ -1,5 +1,6 @@
 from torch.optim.lr_scheduler import _LRScheduler
 from torch.optim.lr_scheduler import ReduceLROnPlateau
+import warnings
 
 
 class GradualWarmupScheduler(_LRScheduler):
@@ -23,6 +24,9 @@ class GradualWarmupScheduler(_LRScheduler):
         super(GradualWarmupScheduler, self).__init__(optimizer)
 
     def get_lr(self):
+        if not self._get_lr_called_within_step:
+            warnings.warn("To get the last learning rate computed by the scheduler, "
+                          "please use `get_last_lr()`.")        
         if self.last_epoch > self.total_epoch:
             if self.after_scheduler:
                 if not self.finished:
