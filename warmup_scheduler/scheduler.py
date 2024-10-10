@@ -57,6 +57,7 @@ class GradualWarmupScheduler(_LRScheduler):
                     self.after_scheduler.step(None)
                 else:
                     self.after_scheduler.step(epoch - self.total_epoch)
+                self.last_epoch = self.after_scheduler.last_epoch + self.total_epoch + 1
                 self._last_lr = self.after_scheduler.get_last_lr()
             else:
                 return super(GradualWarmupScheduler, self).step(epoch)
